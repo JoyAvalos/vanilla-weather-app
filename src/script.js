@@ -52,9 +52,11 @@ function searchCity(city) {
 function showTemperature(response) {
   console.log(response);
   document.querySelector("#selected-city").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  celsiusTemperature = response.data.main.temp;
+
+  document.querySelector("#temperature").innerHTML =
+    Math.round(celsiusTemperature);
+
   document.querySelector("#temperature-details").innerHTML =
     response.data.weather[0].description;
   document.querySelector(
@@ -91,6 +93,22 @@ function handleSubmit(event) {
   let city = document.querySelector("#city-input").value;
   searchCity(city);
 }
+function convertFahrenheit(event) {
+  event.preventDefault();
+  //remove active class
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let temperatureElement = document.querySelector("#temperature");
+  fahrenheitTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  temperatureElement.innerHTML = fahrenheitTemperature;
+}
+function convertCelsius(event) {
+  event.preventDefault();
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
 
 //Form search
 let form = document.querySelector("#search-city");
@@ -102,4 +120,13 @@ weekDay.innerHTML = formatDate(today);
 //Current button
 let buttonCurrent = document.querySelector("#btn-current");
 buttonCurrent.addEventListener("click", getPosition);
+//Global Temperature
+celsiusTemperature = null;
+//Fahrenheit link
+let fahrenheit = document.querySelector("#fahrenheit-link");
+fahrenheit.addEventListener("click", convertFahrenheit);
+//Celsius link
+let celsius = document.querySelector("#celsius-link");
+celsius.addEventListener("click", convertCelsius);
+
 searchCity("Chicago");
