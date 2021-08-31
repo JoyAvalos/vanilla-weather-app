@@ -63,6 +63,12 @@ function showTemperature(response) {
   document.querySelector("#city-wind").innerHTML = `Wind: ${Math.round(
     response.data.wind.speed * 3.6
   )}km/h`;
+  let iconelement = document.querySelector("#icon-city");
+  iconelement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconelement.setAttribute("alt", response.data.weather[0].description);
 }
 // Function used for Current button
 function getPosition(event) {

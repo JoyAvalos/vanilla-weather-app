@@ -30,67 +30,79 @@
   <body>
     <!--Bootstrap Container-->
     <div class="container">
-      <div class="weather-app">
-        <form id="search-city">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <form id="search-city">
+            <div class="row">
+              <div class="col-6">
+                <input
+                  type="search"
+                  placeholder="Enter a city..."
+                  autofocus="on"
+                  autocomplete="off"
+                  id="city-input"
+                  class="form-control fontSize"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="form-control btn buttonColor w-100"
+                  id="btn-search"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  value="Current"
+                  class="form-control btn secondButton w-100"
+                  id="btn-current"
+                />
+              </div>
+            </div>
+          </form>
+          <h1 class="city" id="selected-city"></h1>
+          <ul>
+            <li id="day-of-the-week"></li>
+            <li id="temperature-details"></li>
+          </ul>
           <div class="row">
             <div class="col-6">
-              <input
-                type="search"
-                placeholder="Enter a city..."
-                autofocus="on"
-                autocomplete="off"
-                id="city-input"
-                class="form-control fontSize"
-              />
-            </div>
-            <div class="col-3">
-              <input
-                type="submit"
-                value="Search"
-                class="form-control btn buttonColor w-100"
-                id="btn-search"
-              />
-            </div>
-            <div class="col-3">
-              <input
-                value="Current"
-                class="form-control btn secondButton w-100"
-                id="btn-current"
-              />
-            </div>
-          </div>
-        </form>
-        <h1 class="city" id="selected-city"></h1>
-        <ul>
-          <li id="day-of-the-week"></li>
-          <li id="temperature-details"></li>
-        </ul>
-        <div class="row">
-          <div class="col-6">
-            <!--Weather Icon</i>-->
-            <i class="fas fa-cloud-sun main-icon"></i>
+              <div class="clearfix">
+                <!--Weather Icon</i>-->
+                <div class="float-left">
+                  <img
+                    src=""
+                    alt="image-weather"
+                    id="icon-city"
+                    class="float-left"
+                  />
 
-            <span class="temperature" id="temperature"></span>
-            <span class="units" id="celsius-link">ºC</span>
-            <span class="units" id="fahrenheit-link">ºF</span>
-          </div>
-
-          <div class="col-6">
-            <ul>
-              <li id="city-humidity">Humidity:</li>
-              <li id="city-wind">Wind:</li>
-            </ul>
+                  <strong class="temperature" id="temperature"></strong>
+                  <span class="units" id="celsius-link">ºC</span>
+                  <span class="units" id="fahrenheit-link">
+                    <a id="fahrenheit-link" href="#">ºF</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li id="city-humidity">Humidity:</li>
+                <li id="city-wind">Wind:</li>
+              </ul>
+            </div>
           </div>
         </div>
+        <small
+          ><a
+            href="https://github.com/JoyAvalos/vanilla-weather-app"
+            target="_blank"
+            >Open-source code
+          </a>
+          , by Johanna Avalos</small
+        >
       </div>
-      <small
-        ><a
-          href="https://github.com/JoyAvalos/vanilla-weather-app"
-          target="_blank"
-          >Open-source code
-        </a>
-        , by Johanna Avalos</small
-      >
     </div>
     <script src="src/script.js"></script>
   </body>
